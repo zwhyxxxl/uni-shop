@@ -1,33 +1,31 @@
 {
   "pages": [{
-    "path": "pages/home/home",
-    "style": {
+      "path": "pages/home/home",
+      "style": {
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/my/my",
+      "style": {
 
-      "enablePullDownRefresh": false
+        "enablePullDownRefresh": false
+      }
+
+    },
+    {
+      "path": "pages/cart/cart",
+      "style": {
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/cate/cate",
+      "style": {
+        "enablePullDownRefresh": false
+      }
     }
-
-  }, {
-    "path": "pages/my/my",
-    "style": {
-
-      "enablePullDownRefresh": false
-    }
-
-  }, {
-    "path": "pages/cart/cart",
-    "style": {
-
-      "enablePullDownRefresh": false
-    }
-
-  }, {
-    "path": "pages/cate/cate",
-    "style": {
-
-      "enablePullDownRefresh": false
-    }
-
-  }],
+  ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "乐品购",
@@ -64,6 +62,23 @@
         "selectedIconPath": "static/tab_icons/my-active.png"
       }
     ]
-  }
+  },
+  "subPackages": [{
+    "root": "subpkg",
+    "pages": [{
+        "path": "goods_detail/goods_detail",
+        "style": {
+          "navigationBarTitleText": "",
+          "enablePullDownRefresh": false
+        }
 
+      },
+      {
+        "path": "goods_list/goods_list",
+        "style": {
+          "enablePullDownRefresh": false
+        }
+      }
+    ]
+  }]
 }
