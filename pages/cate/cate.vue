@@ -1,5 +1,7 @@
 <template>
   <view>
+    <!-- 使用自定义的搜索组件 -->
+    <my-search></my-search>
     <view class="scroll-view-container">
       <!-- 左侧的滑动区域 -->
       <scroll-view scroll-y="true" :style="{height: wh+'px'}" class="left-scroll-view">
@@ -45,7 +47,7 @@
     onLoad() {
       this.getCateList()
       const info = uni.getSystemInfoSync()
-      this.wh = info.windowHeight
+      this.wh = info.windowHeight - 50
       // console.log(info);
     },
     methods: {

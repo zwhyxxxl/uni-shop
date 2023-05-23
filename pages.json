@@ -1,39 +1,35 @@
 {
   "pages": [{
-      "path": "pages/home/home",
-      "style": {
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/my/my",
-      "style": {
-
-        "enablePullDownRefresh": false
-      }
-
-    },
-    {
-      "path": "pages/cart/cart",
-      "style": {
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/cate/cate",
-      "style": {
-        "enablePullDownRefresh": false
-      }
-    }
-  ],
+    "path": "pages/home/home",
+    "style": {}
+  }, {
+    "path": "pages/cate/cate",
+    "style": {}
+  }, {
+    "path": "pages/cart/cart",
+    "style": {}
+  }, {
+    "path": "pages/my/my",
+    "style": {}
+  }],
+  "subPackages": [{
+    "root": "subpkg",
+    "pages": [{
+      "path": "goods_detail/goods_detail",
+      "style": {}
+    }, {
+      "path": "goods_list/goods_list",
+      "style": {}
+    }, {
+      "path": "search/search",
+      "style": {}
+    }]
+  }],
   "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "乐品购",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "黑马优购",
     "navigationBarBackgroundColor": "#C00000",
-    "backgroundColor": "#F8F8F8",
-    "app-plus": {
-      "background": "#efeff4"
-    }
+    "backgroundColor": "#FFFFFF"
   },
   "tabBar": {
     "selectedColor": "#C00000",
@@ -62,23 +58,5 @@
         "selectedIconPath": "static/tab_icons/my-active.png"
       }
     ]
-  },
-  "subPackages": [{
-    "root": "subpkg",
-    "pages": [{
-        "path": "goods_detail/goods_detail",
-        "style": {
-          "navigationBarTitleText": "",
-          "enablePullDownRefresh": false
-        }
-
-      },
-      {
-        "path": "goods_list/goods_list",
-        "style": {
-          "enablePullDownRefresh": false
-        }
-      }
-    ]
-  }]
+  }
 }

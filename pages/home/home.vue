@@ -1,5 +1,9 @@
 <template>
   <view>
+    <!-- 使用自定义的搜索组件 -->
+    <view class="search-box">
+      <my-search @click="gotoSearch"></my-search>
+    </view>
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
       <swiper-item v-for="item in swiperList" :key="item.id">
         <navigator :url="`/subpkg/goods_detail/goods_detail?goods_id=${item.goods_id}`" class="swiper-item">
@@ -92,6 +96,12 @@
         this.floorList = data.message
         // console.log(data)
         // uni.$showMsg('数据请求成功')
+      },
+      gotoSearch() {
+        // console.log('ok');
+        uni.navigateTo({
+          url: '/subpkg/search/search'
+        })
       }
     }
   }
@@ -134,5 +144,11 @@
   .floor-img-box {
     display: flex;
     padding-left: 10rpx;
+  }
+
+  .search-box {
+    position: sticky;
+    top: -1px;
+    z-index: 999;
   }
 </style>
