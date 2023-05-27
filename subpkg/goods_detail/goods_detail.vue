@@ -37,10 +37,10 @@
 </template>
 
 <script>
+  import { mapState, mapMutations, mapGetters } from 'vuex'
   export default {
     data() {
       return {
-        goods_info: {},
         // 商品详情对象
         goods_info: {},
         // 左侧按钮组的配置对象
@@ -50,7 +50,7 @@
         }, {
           icon: 'cart',
           text: '购物车',
-          info: 2
+          info: 0
         }],
         // 右侧按钮组的配置对象
         buttonGroup: [{
@@ -66,6 +66,31 @@
         ]
       };
     },
+    computed: {
+      ...mapState('m_cart', []),
+      ...mapGetters('m_cart', ['total']),
+    },
+    watch: {
+      // 1. 监听 total 值的变化，通过第一个形参得到变化后的新值
+      // total(newVal) {
+      //   // 2. 通过数组的 find() 方法，找到购物车按钮的配置对象
+      //   const findResult = this.options.find((x) => x.text === '购物车')
+      //   if (findResult) {
+      //     // 3. 动态为购物车按钮的 info 属性赋值
+      //     findResult.info = newVal
+      //   }
+      // },
+      total: {
+        handler(newVal) {
+          const findResult = this.options.find((x) => x.text === '购物车')
+          if (findResult) {
+            // 3. 动态为购物车按钮的 info 属性赋值
+            findResult.info = newVal
+          }
+        },
+        immediate: true
+      }
+    },
     onLoad(options) {
       console.log(options);
       const goods_id = options.goods_id
@@ -80,6 +105,7 @@
         // 为 data 中的数据赋值
         this.goods_info = res.message
       },
+      ...mapMutations('m_cart', ['addToCart']),
       // 实现轮播图的预览效果
       preview(i) {
         // 调用 uni.previewImage() 方法预览图片
@@ -96,6 +122,20 @@
           uni.switchTab({
             url: '/pages/cart/cart'
           })
+        }
+      },
+      buttonClick(e) {
+        console.log(e);
+        if (e.content.text = '加入购物车') {
+          const goods = {
+            goods_id: this.goods_info.goods_id, // 商品的Id
+            goods_name: this.goods_info.goods_name, // 商品的名称
+            goods_price: this.goods_info.goods_price, // 商品的价格
+            goods_count: 1, // 商品的数量
+            goods_small_logo: this.goods_info.goods_small_logo, // 商品的图片
+            goods_state: true // 商品的勾选状态
+          }
+          this.addToCart(goods)
         }
       }
     }
